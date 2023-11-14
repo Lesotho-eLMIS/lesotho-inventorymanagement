@@ -93,17 +93,17 @@ public class ServicePointController extends BaseController {
   /**
    * List point of delivery event.
    *
-   * @param destinationId a destination facility id.
+   * @param facilityId a destination facility id.
    * @return List of pod events.
    */
   @RequestMapping(method = GET)
   public ResponseEntity<List<ServicePointDto>> getServicePoints(
-      @RequestParam() UUID destinationId) {
+      @RequestParam() UUID facilityId) {
 
     LOGGER.debug("Try to load point of delivery events");
 
     List<ServicePointDto> podsToReturn = 
-        servicePointService.getServicePointsByDestinationId(destinationId);
+        servicePointService.getServicePointsByFacilityId(facilityId);
     
     return new ResponseEntity<>(podsToReturn, OK);
     // Profiler profiler = getProfiler("LIST_POD_EVENTS", ServicePointDto);

@@ -11,9 +11,9 @@
       "type": "string",
       "description": "Remark of the source. Only allowed when source id is present and source id does not point to a facility in ref-data."
     },
-    "destinationId": {
+    "facilityId": {
       "type": "string",
-      "description": "During the 'ISSUE' event, destinationId indicates where orderables are issued to. Can not be present along with source id."
+      "description": "During the 'ISSUE' event, facilityId indicates where orderables are issued to. Can not be present along with source id."
     },
     "destinationFreeText": {
       "type": "string",
@@ -46,5 +46,10 @@
       "description": "Remarks for point of delivery event."
     }
   },
-  "required": ["sourceId", "destinationId", "numberOfCartons", "numberOfContainers"]
+  "required": [
+    "sourceId",
+    "facilityId",
+    "numberOfCartons",
+    "numberOfContainers"
+  ]
 }

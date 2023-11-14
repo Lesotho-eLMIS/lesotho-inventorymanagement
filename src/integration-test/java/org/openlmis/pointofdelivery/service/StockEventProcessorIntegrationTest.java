@@ -153,7 +153,7 @@ public class StockEventProcessorIntegrationTest extends BaseIntegrationTest {
     StockEventDto stockEventDto = createStockEventDto();
     stockEventDto.getLineItems().get(0).setReasonId(reason.getId());
     stockEventDto.getLineItems().get(0).setSourceId(node.getId());
-    stockEventDto.getLineItems().get(0).setDestinationId(node.getId());
+    stockEventDto.getLineItems().get(0).setFacilityId(node.getId());
     stockEventDto.setUserId(userId);
     stockEventDto.setActive(true);
     setContext(stockEventDto);
@@ -180,7 +180,7 @@ public class StockEventProcessorIntegrationTest extends BaseIntegrationTest {
     StockEventDto stockEventDto = createStockEventDto();
     stockEventDto.getLineItems().get(0).setReasonId(reason.getId());
     stockEventDto.getLineItems().get(0).setSourceId(node.getId());
-    stockEventDto.getLineItems().get(0).setDestinationId(node.getId());
+    stockEventDto.getLineItems().get(0).setFacilityId(node.getId());
     stockEventDto.setUserId(userId);
     stockEventDto.setActive(true);
     setContext(stockEventDto);
@@ -202,7 +202,7 @@ public class StockEventProcessorIntegrationTest extends BaseIntegrationTest {
     stockEventDto.setActive(true);
     stockEventDto.getLineItems().get(0).setReasonId(null);
     stockEventDto.getLineItems().get(0).setSourceId(null);
-    stockEventDto.getLineItems().get(0).setDestinationId(null);
+    stockEventDto.getLineItems().get(0).setFacilityId(null);
     setContext(stockEventDto);
 
     //when

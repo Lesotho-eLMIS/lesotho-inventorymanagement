@@ -45,17 +45,17 @@ public class ServicePointService {
   /**
    * Get a list of Point of Delivery events.
    *
-   * @param destinationId destination id.
+   * @param facilityId destination id.
    * @return a list of pod events.
    */
-  public List<ServicePointDto> getServicePointsByDestinationId(UUID destinationId) {
+  public List<ServicePointDto> getServicePointsByFacilityId(UUID facilityId) {
     List<ServicePoint> servicePoints = servicePointsRepository
-        .findByDestinationId(destinationId);
+        .findByFacilityId(facilityId);
     
     if (servicePoints == null) {
       return Collections.emptyList();
     }
-    return ServicePointDto.podToDto(servicePoints);
+    return ServicePointDto.servicePointToDto(servicePoints);
   }
 
   /**
@@ -72,59 +72,35 @@ public class ServicePointService {
     //checkIfDraftExists(dto, id);
     
     LOGGER.info("Attempting to fetch pod event with id = " + id);
-    Optional<ServicePoint> existingPodEventOpt = 
+    Optional<ServicePoint> existingServicePointOpt = 
         servicePointsRepository.findById(id);
 
-    if (existingPodEventOpt.isPresent()) {
-      ServicePoint existingPodEvent = existingPodEventOpt.get();
+    if (existingServicePointOpt.isPresent()) {
+      ServicePoint existingServicePoint = existingServicePointOpt.get();
       ServicePointProcessContext context = contextBuilder.buildContext(dto);
       dto.setContext(context);
-      ServicePoint incomingPodEvent = dto.toServicePoint();
+      ServicePoint incomingServicePoint = dto.toServicePoint();
 
-      // Update the Existing PodEvent object with values incoming DTO data
-      existingPodEvent = copyAttributes(existingPodEvent, incomingPodEvent);
+      // Update the Existing ServicePoint object with values incoming DTO data
+      existingServicePoint = copyAttributes(existingServicePoint, incomingServicePoint);
     
       //save updated pod event
-      servicePointsRepository.save(existingPodEvent);
-      return ServicePointDto.podToDto(existingPodEvent);
+      servicePointsRepository.save(existingServicePoint);
+      return ServicePointDto.servicePointToDto(existingServicePoint);
     } else {
       return null;
     }
   }
 
   private ServicePoint copyAttributes(
-      ServicePoint existingPodEvent, ServicePoint incomingPodEvent) {
-    if (incomingPodEvent.getSourceId() != null) {
-      existingPodEvent.setSourceId(incomingPodEvent.getSourceId());
+      ServicePoint existingServicePoint, ServicePoint incomingServicePoint) {
+    if (incomingServicePoint.getName() != null) {
+      existingServicePoint.setName(incomingServicePoint.getName());
     }
-    if (incomingPodEvent.getSourceFreeText() != null) {
-      existingPodEvent.setSourceFreeText(incomingPodEvent.getSourceFreeText());
+    if (incomingServicePoint.getFacilityId() != null) {
+      existingServicePoint.setFacilityId(incomingServicePoint.getFacilityId());
     }
-    if (incomingPodEvent.getDestinationId() != null) {
-      existingPodEvent.setDestinationId(incomingPodEvent.getDestinationId());
-    }
-    if (incomingPodEvent.getDestinationFreeText() != null) {
-      existingPodEvent.setDestinationFreeText(incomingPodEvent.getDestinationFreeText());
-    }
-    if (incomingPodEvent.getReferenceNumber() != null) {
-      existingPodEvent.setReferenceNumber(incomingPodEvent.getReferenceNumber());
-    }
-    if (incomingPodEvent.getPackingDate() != null) {
-      existingPodEvent.setPackingDate(incomingPodEvent.getPackingDate());
-    }
-    if (incomingPodEvent.getPackedBy() != null) {
-      existingPodEvent.setPackedBy(incomingPodEvent.getPackedBy());
-    }
-    if (incomingPodEvent.getNumberOfCartons() != null) {
-      existingPodEvent.setNumberOfCartons(incomingPodEvent.getNumberOfCartons());
-    }
-    if (incomingPodEvent.getNumberOfContainers() != null) {
-      existingPodEvent.setNumberOfContainers(incomingPodEvent.getNumberOfContainers());
-    }
-    if (incomingPodEvent.getRemarks() != null) {
-      existingPodEvent.setRemarks(incomingPodEvent.getRemarks());
-    }
-    return existingPodEvent;
+    return existingServicePoint;
   }
 
   /**
@@ -140,12 +116,12 @@ public class ServicePointService {
     //checkIfDraftExists(dto, id);
     
     LOGGER.info("Attempting to fetch pod event with id = " + id);
-    Optional<ServicePoint> existingPodEventOpt = 
+    Optional<ServicePoint> existingServicePointOpt = 
         servicePointsRepository.findById(id);
 
-    if (existingPodEventOpt.isPresent()) {
+    if (existingServicePointOpt.isPresent()) {
       //delete pod event
-      servicePointsRepository.delete(existingPodEventOpt.get());
+      servicePointsRepository.delete(existingServicePointOpt.get());
     } else {
       throw new ResourceNotFoundException(new Message("Point of delivery event not found ", id));
     }

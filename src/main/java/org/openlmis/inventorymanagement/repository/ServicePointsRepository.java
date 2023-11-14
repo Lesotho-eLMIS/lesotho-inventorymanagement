@@ -23,5 +23,5 @@ import org.springframework.data.repository.query.Param;
 
 public interface ServicePointsRepository extends
         PagingAndSortingRepository<ServicePoint, UUID> {
-  List<ServicePoint> findByDestinationId(@Param("destinationId") UUID destinationId);
+  List<ServicePoint> findByFacilityId(@Param("facilityId") UUID facilityId);
 }

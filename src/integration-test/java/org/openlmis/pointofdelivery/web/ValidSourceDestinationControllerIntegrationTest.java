@@ -151,9 +151,9 @@ public class ValidSourceDestinationControllerIntegrationTest extends BaseWebTest
     //given
     UUID programId = UUID.randomUUID();
     UUID facilityTypeId = UUID.randomUUID();
-    UUID destinationId = UUID.randomUUID();
+    UUID facilityId = UUID.randomUUID();
     ValidDestinationAssignment assignment = createDestination(
-        programId, facilityTypeId, destinationId);
+        programId, facilityTypeId, facilityId);
 
     ValidSourceDestinationDto validSourceDestinationDto = new ValidSourceDestinationDto();
     validSourceDestinationDto.setProgramId(programId);
@@ -174,7 +174,7 @@ public class ValidSourceDestinationControllerIntegrationTest extends BaseWebTest
         .andExpect(status().isCreated())
         .andExpect(jsonPath(PROGRAM_EXP, is(programId.toString())))
         .andExpect(jsonPath(FACILITY_TYPE_EXP, is(facilityTypeId.toString())))
-        .andExpect(jsonPath(NODE_REFERENCE_ID_EXP, is(destinationId.toString())));
+        .andExpect(jsonPath(NODE_REFERENCE_ID_EXP, is(facilityId.toString())));
   }
 
   @Test
@@ -182,9 +182,9 @@ public class ValidSourceDestinationControllerIntegrationTest extends BaseWebTest
     //given
     UUID programId = UUID.randomUUID();
     UUID facilityTypeId = UUID.randomUUID();
-    UUID destinationId = UUID.randomUUID();
+    UUID facilityId = UUID.randomUUID();
     ValidDestinationAssignment assignment = createDestination(
-        programId, facilityTypeId, destinationId);
+        programId, facilityTypeId, facilityId);
 
     ValidSourceDestinationDto validSourceDestinationDto = new ValidSourceDestinationDto();
     validSourceDestinationDto.setProgramId(programId);
@@ -204,7 +204,7 @@ public class ValidSourceDestinationControllerIntegrationTest extends BaseWebTest
         .andExpect(status().isOk())
         .andExpect(jsonPath(PROGRAM_EXP, is(programId.toString())))
         .andExpect(jsonPath(FACILITY_TYPE_EXP, is(facilityTypeId.toString())))
-        .andExpect(jsonPath(NODE_REFERENCE_ID_EXP, is(destinationId.toString())));
+        .andExpect(jsonPath(NODE_REFERENCE_ID_EXP, is(facilityId.toString())));
   }
 
   @Test

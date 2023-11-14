@@ -155,7 +155,7 @@ public class StockCardServiceIntegrationTest extends BaseIntegrationTest {
     StockEventDto stockEventDto = createStockEventDto();
     stockEventDto.getLineItems().get(0).setReasonId(reason.getId());
     stockEventDto.getLineItems().get(0).setSourceId(node.getId());
-    stockEventDto.getLineItems().get(0).setDestinationId(node.getId());
+    stockEventDto.getLineItems().get(0).setFacilityId(node.getId());
     StockEvent savedEvent = save(stockEventDto, userId);
 
     stockCardService.saveFromEvent(stockEventDto, savedEvent.getId());
@@ -180,7 +180,7 @@ public class StockCardServiceIntegrationTest extends BaseIntegrationTest {
     StockEventDto existingEventDto = createStockEventDto();
     existingEventDto.getLineItems().get(0).setReasonId(reason.getId());
     existingEventDto.getLineItems().get(0).setSourceId(node.getId());
-    existingEventDto.getLineItems().get(0).setDestinationId(node.getId());
+    existingEventDto.getLineItems().get(0).setFacilityId(node.getId());
     final StockEvent existingEvent = save(existingEventDto, randomUUID());
     UUID orderableId = existingEventDto.getLineItems().get(0).getOrderableId();
 
@@ -191,7 +191,7 @@ public class StockCardServiceIntegrationTest extends BaseIntegrationTest {
     newEventDto.getLineItems().get(0).setOrderableId(orderableId);
     newEventDto.getLineItems().get(0).setReasonId(reason.getId());
     newEventDto.getLineItems().get(0).setSourceId(node.getId());
-    newEventDto.getLineItems().get(0).setDestinationId(node.getId());
+    newEventDto.getLineItems().get(0).setFacilityId(node.getId());
 
     long cardAmountBeforeSave = stockCardRepository.count();
     UUID userId = randomUUID();
@@ -215,7 +215,7 @@ public class StockCardServiceIntegrationTest extends BaseIntegrationTest {
     stockEventDto.getLineItems().get(0).setLotId(randomUUID());
     stockEventDto.getLineItems().get(0).setReasonId(reason.getId());
     stockEventDto.getLineItems().get(0).setSourceId(node.getId());
-    stockEventDto.getLineItems().get(0).setDestinationId(node.getId());
+    stockEventDto.getLineItems().get(0).setFacilityId(node.getId());
 
     //1. mock ref data service
     FacilityDto cardFacility = new FacilityDto();
@@ -258,7 +258,7 @@ public class StockCardServiceIntegrationTest extends BaseIntegrationTest {
   public void shouldReassignPhysicalInventoryReasonNames() {
     StockEventDto stockEventDto = StockEventDtoDataBuilder.createStockEventDto();
     stockEventDto.getLineItems().get(0).setSourceId(null);
-    stockEventDto.getLineItems().get(0).setDestinationId(null);
+    stockEventDto.getLineItems().get(0).setFacilityId(null);
     stockEventDto.getLineItems().get(0).setReasonId(null);
     StockEvent savedEvent = save(stockEventDto, randomUUID());
 
@@ -282,7 +282,7 @@ public class StockCardServiceIntegrationTest extends BaseIntegrationTest {
     StockEventDto stockEventDto = createStockEventDto();
     stockEventDto.getLineItems().get(0).setReasonId(reason.getId());
     stockEventDto.getLineItems().get(0).setSourceId(node.getId());
-    stockEventDto.getLineItems().get(0).setDestinationId(node.getId());
+    stockEventDto.getLineItems().get(0).setFacilityId(node.getId());
     StockEvent savedEvent = save(stockEventDto, randomUUID());
     doThrow(new PermissionMessageException(new Message("some error")))
         .when(permissionService)

@@ -159,7 +159,7 @@ traits:
       is: [secured]
       description: Get a list of point of delivery events
       queryParameters:
-        destinationId:
+        facilityId:
           required: true
 
       responses:

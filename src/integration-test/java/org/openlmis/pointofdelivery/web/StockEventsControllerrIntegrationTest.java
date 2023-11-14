@@ -68,7 +68,7 @@ public class StockEventsControllerrIntegrationTest extends BaseWebTest {
     //when
     StockEventDto stockEventDto = createStockEventDto();
     stockEventDto.getLineItems().get(0).setSourceId(null);
-    stockEventDto.getLineItems().get(0).setDestinationId(null);
+    stockEventDto.getLineItems().get(0).setFacilityId(null);
 
     ResultActions resultActions = mvc.perform(post(CREATE_STOCK_EVENT_API)
         .param(ACCESS_TOKEN, ACCESS_TOKEN_VALUE)

@@ -1,4 +1,4 @@
-id,destinationFreeText,documentNumber,occurredDate,processedDate,reasonFreeText,signature,sourceFreeText,userId,destinationId,originEventId,reasonId,quantity,sourceId,stockCardId
+id,destinationFreeText,documentNumber,occurredDate,processedDate,reasonFreeText,signature,sourceFreeText,userId,facilityId,originEventId,reasonId,quantity,sourceId,stockCardId
 b30289cf-753f-44ee-8a71-7f7cf3fb1c9c,,,2016-12-01,2018-07-20 11:22:29.48,,,,b4eae7b4-42f6-4315-9c8c-c4ebb05213cf,,9b7c6639-5861-4f0f-8847-86c1723bd69d,,89,,01439224-a543-4212-a8dd-4c216aba40ee
 3ca4ce3e-b00e-4cab-9b2e-2c23f6dc148c,,,2017-01-31,2017-10-11 02:26:49.886,,,,1e3b03a5-1d48-4de1-bb4a-389beece2277,,1eb9ba25-92e6-447f-a25e-8856bd340f22,,50,,01f8d9e9-1a6e-4c35-8317-fb772063d16f
 fe5366e9-041d-4d31-8021-d8df55ca8648,,,2017-09-01,2017-10-22 20:11:56,,,,43ac7e49-8859-41f7-a1cb-e3ac7b87f9b3,,5eda2982-678a-4b7b-b5d2-cd58d8b18075,e3fc3cf3-da18-44b0-a220-77c985202e06,70,,01f8d9e9-1a6e-4c35-8317-fb772063d16f

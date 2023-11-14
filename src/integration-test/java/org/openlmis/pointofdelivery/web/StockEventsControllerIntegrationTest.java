@@ -130,7 +130,7 @@ public class StockEventsControllerIntegrationTest extends BaseWebIntegrationTest
     item.setLotId(UUID.randomUUID());
     item.setSourceId(UUID.randomUUID());
     item.setSourceFreeText("source");
-    item.setDestinationId(UUID.randomUUID());
+    item.setFacilityId(UUID.randomUUID());
     item.setDestinationFreeText("destination");
     item.setQuantity(10);
     item.setReasonId(UUID.randomUUID());

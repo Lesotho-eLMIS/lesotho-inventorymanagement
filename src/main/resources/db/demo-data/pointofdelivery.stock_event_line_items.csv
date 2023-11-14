@@ -1,4 +1,4 @@
-id,destinationFreeText,destinationId,lotId,occurredDate,orderableId,quantity,reasonFreeText,reasonId,sourceFreeText,sourceId,stockEventId,extraData
+id,destinationFreeText,facilityId,lotId,occurredDate,orderableId,quantity,reasonFreeText,reasonId,sourceFreeText,sourceId,stockEventId,extraData
 af005fe7-becb-4229-85f4-28e150c53db2,,,af804501-ef41-4367-9733-83b73e7c0a4b,2017-05-01,c9e65f02-f84f-4ba2-85f7-e2cb6f0989af,20,,,,,5eda2982-678a-4b7b-b5d2-cd58d8b18075,
 1bad0348-053d-4db0-b2c2-06c8a4d92227,,,,2017-05-01,c9e65f02-f84f-4ba2-85f7-e2cb6f0989af,10,,,,,5eda2982-678a-4b7b-b5d2-cd58d8b18075,
 159cf85a-c5a6-4ca4-bae3-2cdfa8a0b649,,,f34c6fb6-0760-445e-991f-59a6988a3c49,2017-05-01,2400e410-b8dd-4954-b1c0-80d8a8e785fc,50,,,,,5eda2982-678a-4b7b-b5d2-cd58d8b18075,

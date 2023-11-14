@@ -76,29 +76,29 @@ public class ServicePointProcessContextBuilder {
     LOGGER.info("build stock event process context");
     ServicePointProcessContext context = new ServicePointProcessContext();
 
-    profiler.start("CREATE_LAZY_USER");
-    OAuth2Authentication authentication = (OAuth2Authentication) SecurityContextHolder
-        .getContext()
-        .getAuthentication();
+    // profiler.start("CREATE_LAZY_USER");
+    // OAuth2Authentication authentication = (OAuth2Authentication) SecurityContextHolder
+    //     .getContext()
+    //     .getAuthentication();
 
-    Supplier<UUID> userIdSupplier;
+    // Supplier<UUID> userIdSupplier;
 
-    if (authentication.isClientOnly()) {
-      userIdSupplier = servicePointDto::getReceivedByUserId;
-    } else {
-      userIdSupplier = () -> authenticationHelper.getCurrentUser().getId();
-    }
+    // if (authentication.isClientOnly()) {
+    //   userIdSupplier = servicePointDto::getReceivedByUserId;
+    // } else {
+    //   userIdSupplier = () -> authenticationHelper.getCurrentUser().getId();
+    // }
 
-    LazyResource<UUID> userId = new LazyResource<>(userIdSupplier);
-    context.setCurrentUserId(userId);
+    // LazyResource<UUID> userId = new LazyResource<>(userIdSupplier);
+    // context.setCurrentUserId(userId);
 
-    profiler.start("CREATE_LAZY_FACILITY");
-    UUID facilityId = servicePointDto.getDestinationId();
-    Supplier<FacilityDto> facilitySupplier = new ReferenceDataSupplier<>(
-        facilityService, facilityId
-    );
-    LazyResource<FacilityDto> facility = new LazyResource<>(facilitySupplier);
-    context.setFacility(facility);
+    // profiler.start("CREATE_LAZY_FACILITY");
+    // UUID facilityId = servicePointDto.getFacilityId();
+    // Supplier<FacilityDto> facilitySupplier = new ReferenceDataSupplier<>(
+    //     facilityService, facilityId
+    // );
+    // LazyResource<FacilityDto> facility = new LazyResource<>(facilitySupplier);
+    // context.setFacility(facility);
 
     return context;
   }
