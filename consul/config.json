@@ -1,0 +1,15 @@
+{
+  "service": {
+    "Name": "inventorymanagement",
+    "Port": 8080,
+    "Tags": ["openlmis-service"]
+  },
+  "raml": "src/main/resources/api-definition.yaml",
+  "path": [
+    "inventorymanagement",
+    "inventorymanagement/docs",
+    "inventorymanagement/docs/<all>",
+    "inventorymanagement/webjars",
+    "inventorymanagement/webjars/<all>"
+  ]
+}
