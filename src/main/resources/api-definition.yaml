@@ -11,10 +11,10 @@ documentation:
       OpenLMIS Point of Delivery (POD). POD implements CRUD operations for OpenLMIS POD events.
 
       This service provides the following functionality:
-      * Create Point of Delivery event - receive
-      * Get a list of Point of Delivery events for a given facility (destination)
-      * Edit/update a Point of Delivery event
-      * Delete a Point of Delivery event
+      * Create Service Point - receive
+      * Get a list of Service Points for a given facility (destination)
+      * Edit/update a Service Point
+      * Delete a Service Point
 
 schemas:
   - program: !include schemas/program.json
@@ -154,10 +154,10 @@ traits:
           repeat: true
 
 /api:
-  /podEvents:
+  /servicePoints:
     get:
       is: [secured]
-      description: Get a list of point of delivery events
+      description: Get a list of service points
       queryParameters:
         facilityId:
           required: true
@@ -167,7 +167,7 @@ traits:
           description: |
             Returns a default templte with all fields set to not display when no query parameters are passed.
 
-            Returns template that matches destination id.
+            Returns template that matches facility id.
           headers:
             X-Content-Type-Options:
             X-XSS-Protection:
@@ -175,7 +175,7 @@ traits:
             application/json:
               schema: ServicePointDto
         404:
-          description: Point of delivery events not found for the given query parameter.
+          description: Service points not found for the given query parameter.
           body:
             application/json:
               schema: localizedMessage
@@ -187,14 +187,14 @@ traits:
 
     post:
       is: [secured]
-      description: Create a new point of delivery event.
+      description: Create a new service point.
       body:
         application/json:
           schema: ServicePointDto
 
       responses:
         201:
-          description: Point of delivery event has been processed with no validation error or persistence error.
+          description: Service point has been processed with no validation error or persistence error.
           headers:
             Keep-Alive:
           body:
@@ -202,13 +202,13 @@ traits:
               schema: uuid
 
         400:
-          description: Failed to process point of delivery event due to validation error.
+          description: Failed to process service point due to validation error.
           body:
             application/json:
               schema: localizedMessage
 
         403:
-          description: User does not have permission to create point of delivery events for given facility (destination).
+          description: User does not have permission to create service points for given facility (destination).
           body:
             application/json:
               schema: localizedMessage
@@ -222,14 +222,14 @@ traits:
           repeat: false
       put:
         is: [secured]
-        description: Update point of delivery event.
+        description: Update service point.
         body:
           application/json:
             schema: ServicePointDto
 
         responses:
           200:
-            description: Point of delivery event updated.
+            description: Service point updated.
             headers:
               Keep-Alive:
             body:
@@ -242,24 +242,24 @@ traits:
             description: An error occured during request processing.
 
           403:
-            description: User does not have permission to save a point of delivery event.
+            description: User does not have permission to save a Service Point.
             body:
               application/json:
                 schema: localizedMessage
       delete:
         is: [secured]
-        description: Delete a Point of Delivery event.
+        description: Delete a Service Point.
 
         responses:
           204:
-            description: Point of Delivery event deleted.
+            description: Service Point deleted.
           400:
-            description: Point of Delivery event is not found.
+            description: Service Point is not found.
             body:
               application/json:
                 schema: localizedMessage
           403:
-            description: User does not have permission to delete a Point of Delivery event.
+            description: User does not have permission to delete a Service Point.
             body:
               application/json:
                 schema: localizedMessage

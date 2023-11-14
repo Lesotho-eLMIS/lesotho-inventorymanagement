@@ -47,10 +47,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
- * Controller used to perform CRUD operations on point of delivery event.
+ * Controller used to perform CRUD operations on service point.
  */
 @Controller
-@RequestMapping("/api/podEvents")
+@RequestMapping("/api/servicePoints")
 public class ServicePointController extends BaseController {
   public static final String ID_PATH_VARIABLE = "/{id}";
   private static final Logger LOGGER = LoggerFactory.getLogger(ServicePointController.class);
@@ -65,7 +65,7 @@ public class ServicePointController extends BaseController {
   private ServicePointService servicePointService;
 
   /**
-   * Create point of delivery event.
+   * Create service point.
    *
    * @param servicePointDto a pod event bound to request body.
    * @return created pod event's ID.
@@ -75,9 +75,9 @@ public class ServicePointController extends BaseController {
   public ResponseEntity<UUID> createServicePoint(
         @RequestBody ServicePointDto servicePointDto) {
 
-    LOGGER.debug("Try to create a point of delivery event");
+    LOGGER.debug("Try to create a service point");
 
-    Profiler profiler = getProfiler("CREATE_POD_EVENT", servicePointDto);
+    Profiler profiler = getProfiler("CREATE_SERVICE_POINT", servicePointDto);
 
     //checkPermission(ServicePointDto, profiler.startNested("CHECK_PERMISSION"));
 
@@ -91,7 +91,7 @@ public class ServicePointController extends BaseController {
   }
 
   /**
-   * List point of delivery event.
+   * List service point.
    *
    * @param facilityId a destination facility id.
    * @return List of pod events.
@@ -100,13 +100,13 @@ public class ServicePointController extends BaseController {
   public ResponseEntity<List<ServicePointDto>> getServicePoints(
       @RequestParam() UUID facilityId) {
 
-    LOGGER.debug("Try to load point of delivery events");
+    LOGGER.debug("Try to load service points");
 
     List<ServicePointDto> podsToReturn = 
         servicePointService.getServicePointsByFacilityId(facilityId);
     
     return new ResponseEntity<>(podsToReturn, OK);
-    // Profiler profiler = getProfiler("LIST_POD_EVENTS", ServicePointDto);
+    // Profiler profiler = getProfiler("LIST_SERVICE_POINTS", ServicePointDto);
 
     //checkPermission(ServicePointDto, profiler.startNested("CHECK_PERMISSION"));
 

@@ -18,25 +18,18 @@ package org.openlmis.inventorymanagement.service;
 import static org.slf4j.LoggerFactory.getLogger;
 import static org.slf4j.ext.XLoggerFactory.getXLogger;
 
-import java.util.UUID;
-import java.util.function.Supplier;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import org.openlmis.inventorymanagement.dto.ServicePointDto;
-import org.openlmis.inventorymanagement.dto.referencedata.FacilityDto;
 import org.openlmis.inventorymanagement.service.referencedata.FacilityReferenceDataService;
 import org.openlmis.inventorymanagement.util.AuthenticationHelper;
-import org.openlmis.inventorymanagement.util.LazyResource;
-import org.openlmis.inventorymanagement.util.ReferenceDataSupplier;
 import org.openlmis.inventorymanagement.util.ServicePointProcessContext;
 
 import org.slf4j.Logger;
 import org.slf4j.ext.XLogger;
 import org.slf4j.profiler.Profiler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Service;
 
 /**
